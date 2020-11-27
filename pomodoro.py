@@ -34,17 +34,16 @@ def set_up_menu():
 
 
 def app_title(percent=0):
-    title = "🧲 ○○○○○"
     if percent <= 20:
-        return "🧲 ●○○○○"
+        return f"🧲 ﹅⁃⁃⁃⁃ {percent}%"
     if percent > 20 and percent <= 40:
-        return "🧲 ●●○○○"
+        return f"🧲 ﹅﹅⁃⁃⁃ {percent}%"
     if percent > 40 and percent <= 60:
-        return "🧲 ●●●○○"
+        return f"🧲 ﹅﹅﹅⁃⁃ {percent}%"
     if percent > 60 and percent <= 80:
-        return "🧲 ●●●●○"
+        return f"🧲 ﹅﹅﹅﹅⁃ {percent}%"
     if percent > 80:
-        return "🧲 ●●●●●"
+        return f"🧲 ﹅﹅﹅﹅﹅ {percent}%"
 
 
 def on_tick(sender):
@@ -60,7 +59,7 @@ def on_tick(sender):
 
         set_up_menu()
     else:
-        percent = (sender.count / sender.end) * 100
+        percent = (sender.count * 100)  // sender.end
         app.title = app_title(percent)
     sender.count += 1
 
